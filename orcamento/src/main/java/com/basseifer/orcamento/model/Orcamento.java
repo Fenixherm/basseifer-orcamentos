@@ -25,7 +25,7 @@ public class Orcamento {
     private String tipoProjeto;
     private String situacao;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     @JsonBackReference
     private Usuario usuario;
 
@@ -44,7 +44,6 @@ public class Orcamento {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
 
 
     public String getNomeCliente() {

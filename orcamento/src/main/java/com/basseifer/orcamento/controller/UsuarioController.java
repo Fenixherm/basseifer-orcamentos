@@ -20,6 +20,13 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.buscarPorId(id));
     }
 
+    //Não trazer o password ao fazer a pesquisa
+    @GetMapping("/{username}")
+    public ResponseEntity<Usuario> buscarPorUsername(@PathVariable String username){
+        return ResponseEntity.ok(usuarioService.findByUsername(username));
+
+    }
+
     @PostMapping
     public ResponseEntity<Usuario> inserir(@RequestBody Usuario usuario){
         usuarioService.inserirUsuario(usuario);

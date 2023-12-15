@@ -11,15 +11,25 @@ import java.util.List;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id_user")
     private Long id;
     @Column(length = 50, nullable = false)
     private String nome;
+    @Column(length = 20, nullable = false)
+    private String username;
+    @Column(length = 100, nullable = false)
+    private String password;
 
+    //Definir as Roles para os usuários
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "id_user"))
+    @Column(name = "role_id")
+    private List<String> roles = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "usuario")
     @JsonManagedReference
     private List<Orcamento> orcamento = new ArrayList<>();
 
+    //Getters and setters
     public List<Orcamento> getOrcamento() {
         return orcamento;
     }
@@ -42,6 +52,30 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     @Override

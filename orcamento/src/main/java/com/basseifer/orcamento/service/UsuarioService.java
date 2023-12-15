@@ -24,6 +24,10 @@ public class UsuarioService implements IUsuarioService {
         return usuario.get();
     }
 
+    @Override
+    public Usuario findByUsername(String username) {
+        return usuarioRepository.findByusername(username);
+    }
 
 
     @Override
