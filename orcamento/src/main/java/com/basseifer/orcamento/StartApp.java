@@ -15,6 +15,7 @@ public class StartApp implements CommandLineRunner {
     private UsuarioRepository repository;
     @Override
     public void run(String... args) throws Exception {
+        /*
         Usuario usuario = new Usuario();
         usuario.setNome("Guilherme");
         usuario.setUsername("Guilherme");
@@ -24,6 +25,6 @@ public class StartApp implements CommandLineRunner {
         repository.save(usuario);
         for (Usuario u: repository.findAll()){
             System.out.println(u);
-        }
+        }*/
     }
 }
