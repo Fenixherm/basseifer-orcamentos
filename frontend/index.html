@@ -7,8 +7,27 @@
 </head>
 <body>
     <h1>Teste</h1>
-    <form action="http://127.0.0.1:8080/index" method="get">
-        <input type="submit" value="Submit">
-    </form>
+    <input type="button" value="" id="botao"> 
+    <script>
+
+        const apiURL = 'http://localhost:8080/usuarios/1';
+        const botao = document.getElementById("botao");
+
+        botao.addEventListener("click", () => {
+            fetch(apiURL).then(
+            response => {
+                if(!response.ok){
+                    throw new Error('URL not find');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error =>{
+                console.error('Error: ', error);
+            })
+        })
+    </script>
 </body>
 </html>

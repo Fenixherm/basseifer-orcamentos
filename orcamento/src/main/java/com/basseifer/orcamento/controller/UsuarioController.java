@@ -21,7 +21,7 @@ public class UsuarioController {
     }
 
     //Não trazer o password ao fazer a pesquisa
-    @GetMapping("/{username}")
+    @GetMapping("buscar-por-nome/{username}")
     public ResponseEntity<Usuario> buscarPorUsername(@PathVariable String username){
         return ResponseEntity.ok(usuarioService.findByUsername(username));
 
@@ -33,7 +33,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario usuario){
 
         usuarioService.atualizar(id, usuario);
