@@ -6,6 +6,7 @@ import com.basseifer.orcamento.model.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -53,5 +54,11 @@ public class UsuarioService implements IUsuarioService {
             System.out.println("Usuário Inexistente !");
             return;
         }
+    }
+
+    @Override
+    public Boolean usuarioAutorizado(String username, String password) {
+        Usuario usuarioBdOptional = usuarioRepository.findByusername(username);
+        return Objects.equals(usuarioBdOptional.getPassword(), password);
     }
 }

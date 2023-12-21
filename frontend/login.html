@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username"><br><br>
+        
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password"><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://localhost:8080/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username: username, password: password })
+            })
+            .then(response => response.text())
+            .then(sessionKey => {
+                if (sessionKey) {
+                    window.location.href = './login.html';
+                } else {
+                    alert('Credenciais inválidas');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao fazer login:', error);
+                alert('Erro ao fazer login');
+            });
+        });
+    </script>
+</body>
+</html>

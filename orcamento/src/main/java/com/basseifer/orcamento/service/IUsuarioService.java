@@ -12,4 +12,6 @@ public interface IUsuarioService {
     Usuario findByUsername(String username);
     void inserirUsuario(Usuario usuario);
     void atualizar(Long id, Usuario usuario);
+
+    Boolean usuarioAutorizado(String username, String password);
 }
