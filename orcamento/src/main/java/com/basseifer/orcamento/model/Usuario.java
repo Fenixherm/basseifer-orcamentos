@@ -16,9 +16,9 @@ public class Usuario {
     @Column(length = 50, nullable = false)
     private String nome;
     @Column(length = 20, nullable = false)
-    private String username;
+    private String usuario;
     @Column(length = 100, nullable = false)
-    private String password;
+    private String senha;
 
     //Definir as Roles para os usuários
     @ElementCollection(fetch = FetchType.EAGER)
@@ -55,19 +55,19 @@ public class Usuario {
     }
 
     public String getUsername() {
-        return username;
+        return usuario;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.usuario = username;
     }
 
     public String getPassword() {
-        return password;
+        return senha;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.senha = senha;
     }
 
     public List<String> getRoles() {

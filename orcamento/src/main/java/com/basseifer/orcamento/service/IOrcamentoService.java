@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public interface IOrcamentoService {
     Iterable<Orcamento> buscarTodos();
     Iterable<Orcamento> findAllBynomeCliente(String nome);
-    Iterable<Orcamento> findByLocalDate(LocalDate data1, LocalDate data2);
+    //Iterable<Orcamento> findByLocalDate(LocalDate data1, LocalDate data2);
     Orcamento findByromaneio(Integer romaneio);
     Orcamento buscarPorId(Long idOrcamento);
     long countMethod();

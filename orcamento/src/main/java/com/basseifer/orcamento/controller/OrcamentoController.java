@@ -50,11 +50,12 @@ public class OrcamentoController {
     public ResponseEntity<Iterable<Orcamento>> findAllByName(@PathVariable String nome){
         return ResponseEntity.ok(orcamentoService.findAllBynomeCliente(nome));
     }
+    /*
     @GetMapping("/data-orcamento/{data1}:{data2}")
     public ResponseEntity<Iterable<Orcamento>> findByLocalDate(@PathVariable LocalDate data1, @PathVariable LocalDate data2){
         return ResponseEntity.ok(orcamentoService.findByLocalDate(data1, data2));
     }
-
+*/
     @PostMapping
     public ResponseEntity<Orcamento> inserir(@RequestBody Orcamento orcamento){
         orcamentoService.inserirOrcamento(orcamento);

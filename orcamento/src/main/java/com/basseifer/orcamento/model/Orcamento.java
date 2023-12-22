@@ -20,8 +20,8 @@ public class Orcamento {
     private String obra;
     private Integer romaneio;
     private int posicao;
-    private LocalDate dataChegada;
-    private LocalDate dataSaida;
+    //private LocalDate dataChegada;
+    //private LocalDate dataSaida;
     private String tipoProjeto;
     private String situacao;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -101,7 +101,7 @@ public class Orcamento {
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
-
+    /*
     public LocalDate getDataChegada() {
         return dataChegada;
     }
@@ -117,7 +117,7 @@ public class Orcamento {
     public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
-
+*/
     public String getTipoProjeto() {
         return tipoProjeto;
     }

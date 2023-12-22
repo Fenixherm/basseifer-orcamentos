@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface IUsuarioService {
     Iterable<Usuario> buscarTodos();
     Usuario buscarPorId(Long id);
-    Usuario findByUsername(String username);
+    Usuario findByUsuario(String usuario);
     void inserirUsuario(Usuario usuario);
     void atualizar(Long id, Usuario usuario);
 

@@ -81,9 +81,9 @@ public class OrcamentoService implements IOrcamentoService{
     public void deletar(Long id) {
         orcamentoRepository.delete(buscarPorId(id));
     }
-
+    /*
     @Override
     public Iterable<Orcamento> findByLocalDate(LocalDate data1, LocalDate data2) {
         return orcamentoRepository.findByLocalDate(data1, data2);
-    }
+    }*/
 }

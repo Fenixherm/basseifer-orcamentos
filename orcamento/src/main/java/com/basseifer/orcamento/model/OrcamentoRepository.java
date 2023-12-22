@@ -13,9 +13,9 @@ public interface OrcamentoRepository  extends JpaRepository<Orcamento, Long> {
 
     @Query("select o from Orcamento o where o.nomeCliente like %:nome%")
     Iterable<Orcamento> findAllBynomeCliente(@Param("nome") String nome);
-
+    /*
     @Query("select o from Orcamento o where o.dataChegada between ?1 and ?2")
     Iterable<Orcamento> findByLocalDate(LocalDate data1, LocalDate data2);
-
+*/
     //TODO: Criar uma query que busca os todos os orçamentos por usuário
 }

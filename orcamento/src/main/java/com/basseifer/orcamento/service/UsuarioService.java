@@ -26,8 +26,8 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Usuario findByUsername(String username) {
-        return usuarioRepository.findByusername(username);
+    public Usuario findByUsuario(String usuario) {
+        return usuarioRepository.findByusername(usuario);
     }
 
 
