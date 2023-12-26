@@ -31,6 +31,5 @@ public class AuthController {
         }else{
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
-
     }
 }

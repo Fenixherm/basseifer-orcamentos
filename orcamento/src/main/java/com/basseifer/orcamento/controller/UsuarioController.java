@@ -17,26 +17,25 @@ public class UsuarioController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
-        return ResponseEntity.ok(usuarioService.buscarPorId(id));
+        return ResponseEntity.status(200).body(usuarioService.buscarPorId(id));
     }
 
     //Não trazer o password ao fazer a pesquisa
     @GetMapping("buscar-por-nome/{username}")
     public ResponseEntity<Usuario> buscarPorUsername(@PathVariable String username){
-        return ResponseEntity.ok(usuarioService.findByUsuario(username));
-
+        return ResponseEntity.status(200).body(usuarioService.findByUsuario(username));
     }
 
     @PostMapping
     public ResponseEntity<Usuario> inserir(@RequestBody Usuario usuario){
         usuarioService.inserirUsuario(usuario);
-        return ResponseEntity.ok(usuario);
+        return ResponseEntity.status(201).body(usuario);
     }
 
     @PutMapping("{id}")
     public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario usuario){
 
         usuarioService.atualizar(id, usuario);
-        return ResponseEntity.ok(usuario);
+        return ResponseEntity.status(201).body(usuario);
     }
 }

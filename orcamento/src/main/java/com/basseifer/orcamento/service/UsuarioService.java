@@ -14,6 +14,7 @@ public class UsuarioService implements IUsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+
     @Override
     public Iterable<Usuario> buscarTodos() {
         return usuarioRepository.findAll();
@@ -27,7 +28,7 @@ public class UsuarioService implements IUsuarioService {
 
     @Override
     public Usuario findByUsuario(String usuario) {
-        return usuarioRepository.findByusername(usuario);
+        return usuarioRepository.findByusuario(usuario);
     }
 
 
@@ -57,8 +58,8 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public Boolean usuarioAutorizado(String username, String password) {
-        Usuario usuarioBdOptional = usuarioRepository.findByusername(username);
-        return Objects.equals(usuarioBdOptional.getPassword(), password);
+    public Boolean usuarioAutorizado(String usuario, String senha) {
+        Usuario usuarioBdOptional = usuarioRepository.findByusuario(usuario);
+        return Objects.equals(usuarioBdOptional.getSenha(), senha);
     }
 }
