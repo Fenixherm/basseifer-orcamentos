@@ -2,6 +2,9 @@ package com.basseifer.orcamento.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +13,20 @@ import java.util.List;
 @Table(name = "tab_usuario")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long id;
-    @Column(length = 50, nullable = false)
+
+    @NotBlank(message = "Nome obrigatório!")
+    @Size(min = 3, message = "Nome deve ter no mínimo 3 caracteres!")
+    @Column(length = 50)
     private String nome;
+
+    @Size(min = 3, message = "Usuario deve ter no mínimo 3 caracteres!")
+    @NotBlank(message = "Usuario obrigatório!")
     @Column(length = 20, nullable = false)
     private String usuario;
+    @NotBlank(message = "Senha obrigatória!")
     @Column(length = 100, nullable = false)
     private String senha;
 
@@ -54,13 +64,6 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String username) {
-        this.usuario = username;
-    }
 
     public String getSenha() {
         return senha;
@@ -85,5 +88,13 @@ public class Usuario {
                 ", nome='" + nome + '\'' +
                 ", orcamento=" + orcamento +
                 '}';
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 }
