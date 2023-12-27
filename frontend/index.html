@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste</title>
 </head>
+
 <body>
     <h1>Teste</h1>
-    <input type="button" value="" id="botao"> 
+    <input type="button" value="" id="botao">
+    <script>
+        fetch('http://localhost:8080/rota-protegida', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+                // Adicione headers conforme necessário para autenticação (cookies, etc.)
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        // Redireciona o usuário para a página de login
+                        window.location.href = './login.html';
+                    } else {
+                        // Exibe uma mensagem de acesso negado ou trata de outras respostas de erro
+                        console.error('Erro:', response.statusText);
+                        // Exemplo de como exibir uma mensagem de erro para o usuário
+                        alert('Acesso negado. Faça login para acessar esta página.');
+                        window.location.href = './login.html';
+                    }
+                } else {
+                    // Continua com a renderização da página protegida, pois o usuário está autenticado
+                    // ...
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao verificar autenticação:', error);
+                alert('Erro ao verificar autenticação. Tente novamente.');
+            });
+    </script>
 </body>
+
 </html>
