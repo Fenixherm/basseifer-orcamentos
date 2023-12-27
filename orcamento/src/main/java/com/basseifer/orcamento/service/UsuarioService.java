@@ -1,10 +1,13 @@
 package com.basseifer.orcamento.service;
 
-import com.basseifer.orcamento.model.OrcamentoRepository;
+import com.basseifer.orcamento.configuration.UserConfiguration;
 import com.basseifer.orcamento.model.Usuario;
 import com.basseifer.orcamento.model.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +16,8 @@ import java.util.Optional;
 public class UsuarioService implements IUsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private UserConfiguration passwordEncoder;
 
 
     @Override
@@ -41,6 +46,8 @@ public class UsuarioService implements IUsuarioService {
                 return;
             }
         }
+        usuario.setSenha(passwordEncoder.encoder().encode(usuario.getSenha()));
+
         usuarioRepository.save(usuario);
     }
 
