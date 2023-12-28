@@ -1,5 +1,6 @@
 package com.basseifer.orcamento.controller;
 
+import com.basseifer.orcamento.configuration.UserConfiguration;
 import com.basseifer.orcamento.model.Credenciais;
 import com.basseifer.orcamento.model.Usuario;
 import com.basseifer.orcamento.service.UsuarioService;
@@ -14,21 +15,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("usuarios")
+@RequestMapping
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
-    @GetMapping
+    @Autowired
+    private UserConfiguration passwordEncoder;
+    @GetMapping("/usuarios")
     public ResponseEntity<Iterable<Usuario>> buscarTodos(){
         return ResponseEntity.ok(usuarioService.buscarTodos());
     }
-    @GetMapping("/{id}")
+    @GetMapping("/usuario/{id}")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.status(200).body(usuarioService.buscarPorId(id));
     }
 
     //Não trazer o password ao fazer a pesquisa
-    @GetMapping("buscar-por-nome/{username}")
+    @GetMapping("/buscar-por-nome/{username}")
     public ResponseEntity<Usuario> buscarPorUsername(@PathVariable String username){
         return ResponseEntity.status(200).body(usuarioService.findByUsuario(username));
     }
@@ -48,8 +51,6 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<Credenciais> login(@RequestBody Credenciais usuario){
-
-        System.out.println(usuario);
 
         Boolean valido = usuarioService.usuarioAutorizado(usuario.getUsuario(), usuario.getSenha());
         if(!valido){
