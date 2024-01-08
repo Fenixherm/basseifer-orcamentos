@@ -48,8 +48,6 @@ public class UsuarioService implements IUsuarioService {
                 return;
             }
         }
-        usuario.setSenha(passwordEncoder.encoder().encode(usuario.getSenha()));
-
         usuarioRepository.save(usuario);
     }
 

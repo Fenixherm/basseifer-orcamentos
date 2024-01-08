@@ -49,9 +49,11 @@ public class UsuarioController {
         return ResponseEntity.status(201).body(usuario);
     }
 
+
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<Credenciais> login(@RequestBody Credenciais usuario){
-
+        System.out.println("Vai logar ?");
         Boolean valido = usuarioService.usuarioAutorizado(usuario.getUsuario(), usuario.getSenha());
         if(!valido){
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
