@@ -1,0 +1,9 @@
+.mes-atual{
+    display: flex;
+    text-align: center;
+}
+
+.tabelas-1{
+    display: flex;
+    justify-content: space-around;
+}
