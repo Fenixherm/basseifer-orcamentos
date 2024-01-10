@@ -1,6 +1,5 @@
 package com.basseifer.orcamento.controller;
 
-import com.basseifer.orcamento.configuration.UserConfiguration;
 import com.basseifer.orcamento.model.Credenciais;
 import com.basseifer.orcamento.model.Usuario;
 import com.basseifer.orcamento.service.UsuarioService;

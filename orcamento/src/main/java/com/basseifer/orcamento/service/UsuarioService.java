@@ -1,25 +1,18 @@
 package com.basseifer.orcamento.service;
 
-import com.basseifer.orcamento.configuration.UserConfiguration;
 import com.basseifer.orcamento.model.Usuario;
 import com.basseifer.orcamento.model.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class UsuarioService implements IUsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
-    private UserConfiguration passwordEncoder;
+
 
 
     @Override
@@ -67,6 +60,6 @@ public class UsuarioService implements IUsuarioService {
     @Override
     public Boolean usuarioAutorizado(String usuario, String senha) {
         Usuario usuarioBdOptional = usuarioRepository.findByusuario(usuario);
-        return passwordEncoder.encoder().matches(usuarioBdOptional.getSenha(), senha);
+        return null;
     }
 }
