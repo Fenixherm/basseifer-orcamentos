@@ -12,3 +12,17 @@
     display: flex;
     justify-content: space-around;
 }
+
+.tabela-orcamento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabela-orcamento h3{
+    margin-bottom: 5px;
+}
+
+.tabela-orcamento h2{
+    font-size: 2rem;
+}
